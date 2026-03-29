@@ -197,10 +197,12 @@
 
         function checkoutWhatsApp() {
             if (!cart.length) return alert("Cart is empty!");
-            let msg = "Order from Website:\n\n";
-            cart.forEach(item => msg += `- ${item.name} x ${item.qty} = ₹${item.price * item.qty}\n`);
-            window.open(`https://wa.me{WHATSAPP_NUM}?text=${encodeURIComponent(msg)}`);
+            let msg = "Order Request:\n\n";
+            cart.forEach(item => msg += `• ${item.name} x ${item.qty} = ₹${item.price * item.qty}\n`);
+            // Use api.whatsapp.com for best compatibility
+            window.open(`https://api.whatsapp.com{WHATSAPP_NUM}&text=${encodeURIComponent(msg)}`, '_blank');
         }
+
 
         function openProduct(name, desc, price, img) {
             currentModalQty = 1; document.getElementById('modal-qty').innerText = 1;
