@@ -209,7 +209,9 @@
             document.getElementById('mTitle').innerText = name; document.getElementById('mDesc').innerText = desc;
             document.getElementById('mPrice').innerText = '₹' + price; document.getElementById('mImg').src = img;
             document.getElementById('modal-add-btn').onclick = () => { addToCart(name, price, img, currentModalQty); closeProduct(); toggleCart(); };
-            document.getElementById('modal-wa-direct').href = `https://wa.me{WHATSAPP_NUM}?text=${encodeURIComponent('I want to order '+name+' [Qty: '+currentModalQty+']')}`;
+            
+            const directMsg = `I want to order ${name} [Qty: ${currentModalQty}]`;
+            document.getElementById('modal-wa-direct').href = `https://api.whatsapp.com{WHATSAPP_NUM}&text=${encodeURIComponent(directMsg)}`;
             document.getElementById('pModal').style.display = "block";
         }
         function closeProduct() { document.getElementById('pModal').style.display = "none"; }
